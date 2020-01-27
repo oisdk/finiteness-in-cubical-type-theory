@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html><head><meta charset="utf-8"><title>README</title><link rel="stylesheet" href="Agda.css"></head><body><pre class="Agda"><a id="1" class="Symbol">{-#</a> <a id="5" class="Keyword">OPTIONS</a> <a id="13" class="Pragma">--cubical</a> <a id="23" class="Pragma">--safe</a> <a id="30" class="Symbol">#-}</a>
+
+<a id="35" class="Keyword">module</a> <a id="42" href="README.html" class="Module">README</a> <a id="49" class="Keyword">where</a>
+
+<a id="56" class="Comment">--------------------------------------------------------------------------------</a>
+<a id="137" class="Comment">-- Section 1: Introduction</a>
+<a id="164" class="Comment">--------------------------------------------------------------------------------</a>
+
+<a id="246" class="Comment">-- 0, 1, and 2 types</a>
+<a id="267" class="Keyword">import</a> <a id="274" href="Data.Empty.html" class="Module">Data.Empty</a> <a id="285" class="Keyword">using</a> <a id="291" class="Symbol">(</a><a id="292" href="Cubical.Data.Empty.Base.html#114" class="Datatype">⊥</a><a id="293" class="Symbol">)</a>
+<a id="295" class="Keyword">import</a> <a id="302" href="Data.Unit.html" class="Module">Data.Unit</a>  <a id="313" class="Keyword">using</a> <a id="319" class="Symbol">(</a><a id="320" href="Agda.Builtin.Unit.html#137" class="Record">⊤</a><a id="321" class="Symbol">)</a>
+<a id="323" class="Keyword">import</a> <a id="330" href="Data.Bool.html" class="Module">Data.Bool</a>  <a id="341" class="Keyword">using</a> <a id="347" class="Symbol">(</a><a id="348" href="Agda.Builtin.Bool.html#135" class="Datatype">Bool</a><a id="352" class="Symbol">)</a>
+
+<a id="355" class="Comment">-- Dependent Sum and Product</a>
+<a id="384" class="Keyword">import</a> <a id="391" href="Data.Sigma.html" class="Module">Data.Sigma</a> <a id="402" class="Keyword">using</a> <a id="408" class="Symbol">(</a><a id="409" href="Agda.Builtin.Sigma.html#139" class="Record">Σ</a><a id="410" class="Symbol">)</a>
+<a id="412" class="Keyword">import</a> <a id="419" href="Data.Pi.html" class="Module">Data.Pi</a>    <a id="430" class="Keyword">using</a> <a id="436" class="Symbol">(</a><a id="437" href="Data.Pi.Base.html#81" class="Function">Π</a><a id="438" class="Symbol">)</a>
+
+<a id="441" class="Comment">-- Disjoint Union</a>
+<a id="459" class="Keyword">import</a> <a id="466" href="Data.Sum.html" class="Module">Data.Sum</a> <a id="475" class="Keyword">using</a> <a id="481" class="Symbol">(</a><a id="482" href="Cubical.Data.Sum.Base.html#170" class="Datatype Operator">_⊎_</a><a id="485" class="Symbol">)</a>
+<a id="487" class="Keyword">import</a> <a id="494" href="Data.Sum.Properties.html" class="Module">Data.Sum.Properties</a> <a id="514" class="Keyword">using</a> <a id="520" class="Symbol">(</a><a id="521" href="Data.Sum.Properties.html#155" class="Function">sumAsSigma</a><a id="531" class="Symbol">)</a>
+
+<a id="534" class="Comment">-- Definition 1: Path types</a>
+<a id="562" class="Keyword">import</a> <a id="569" href="Path.html" class="Module">Path</a> <a id="574" class="Keyword">using</a> <a id="580" class="Symbol">(</a><a id="581" href="Agda.Builtin.Cubical.Path.html#353" class="Function Operator">_≡_</a><a id="584" class="Symbol">)</a>
+
+<a id="587" class="Comment">-- Definition 2: Homotopy Levels</a>
+<a id="620" class="Keyword">import</a> <a id="627" href="HLevels.html" class="Module">HLevels</a> <a id="635" class="Keyword">using</a> <a id="641" class="Symbol">(</a><a id="642" href="Cubical.Foundations.Prelude.html#5380" class="Function">isContr</a><a id="649" class="Symbol">;</a> <a id="651" href="Cubical.Foundations.Prelude.html#5444" class="Function">isProp</a><a id="657" class="Symbol">;</a> <a id="659" href="Cubical.Foundations.Prelude.html#5499" class="Function">isSet</a><a id="664" class="Symbol">)</a>
+
+<a id="667" class="Comment">-- Definition 3: Fibres</a>
+<a id="691" class="Keyword">import</a> <a id="698" href="Function.Fiber.html" class="Module">Function.Fiber</a> <a id="713" class="Keyword">using</a> <a id="719" class="Symbol">(</a><a id="720" href="Cubical.Foundations.Equiv.html#801" class="Function">fiber</a><a id="725" class="Symbol">)</a>
+
+<a id="728" class="Comment">-- Definition 4: Equivalences</a>
+<a id="758" class="Keyword">import</a> <a id="765" href="Equiv.html" class="Module">Equiv</a> <a id="771" class="Keyword">using</a> <a id="777" class="Symbol">(</a><a id="778" href="Agda.Builtin.Cubical.Glue.html#840" class="Record">isEquiv</a><a id="785" class="Symbol">;</a> <a id="787" href="Agda.Builtin.Cubical.Glue.html#1023" class="Function Operator">_≃_</a><a id="790" class="Symbol">)</a>
+
+<a id="793" class="Comment">-- Definition 5: Decidable</a>
+<a id="820" class="Keyword">import</a> <a id="827" href="Relation.Nullary.Decidable.html" class="Module">Relation.Nullary.Decidable</a> <a id="854" class="Keyword">using</a> <a id="860" class="Symbol">(</a><a id="861" href="Relation.Nullary.Decidable.Base.html#309" class="Record">Dec</a><a id="864" class="Symbol">)</a>
+
+<a id="867" class="Comment">-- Definition 6: Discrete</a>
+<a id="893" class="Keyword">import</a> <a id="900" href="Relation.Nullary.Discrete.html" class="Module">Relation.Nullary.Discrete</a> <a id="926" class="Keyword">using</a> <a id="932" class="Symbol">(</a><a id="933" href="Relation.Nullary.Discrete.Base.html#160" class="Function">Discrete</a><a id="941" class="Symbol">)</a>
+<a id="943" class="Keyword">import</a> <a id="950" href="Relation.Nullary.Discrete.Properties.html" class="Module">Relation.Nullary.Discrete.Properties</a> <a id="987" class="Keyword">using</a> <a id="993" class="Symbol">(</a><a id="994" href="Relation.Nullary.Discrete.Properties.html#335" class="Function">Discrete→isSet</a><a id="1008" class="Symbol">)</a>
+
+<a id="1011" class="Comment">-- Definition 8: Propositional Truncation</a>
+<a id="1053" class="Keyword">import</a> <a id="1060" href="HITs.PropositionalTruncation.html" class="Module">HITs.PropositionalTruncation</a> <a id="1089" class="Keyword">using</a> <a id="1095" class="Symbol">(</a><a id="1096" href="Cubical.HITs.PropositionalTruncation.Base.html#259" class="Datatype Operator">∥_∥</a><a id="1099" class="Symbol">)</a>
+<a id="1101" class="Keyword">import</a> <a id="1108" href="HITs.PropositionalTruncation.html" class="Module">HITs.PropositionalTruncation</a> <a id="1137" class="Keyword">using</a> <a id="1143" class="Symbol">(</a><a id="1144" href="Cubical.HITs.PropositionalTruncation.Properties.html#514" class="Function">recPropTrunc</a><a id="1156" class="Symbol">;</a> <a id="1158" href="Cubical.HITs.PropositionalTruncation.Properties.html#1936" class="Function">recPropTrunc→Set</a><a id="1174" class="Symbol">)</a>
+
+<a id="1177" class="Comment">--------------------------------------------------------------------------------</a>
+<a id="1258" class="Comment">-- Section 2: Finiteness Predicates</a>
+<a id="1294" class="Comment">--------------------------------------------------------------------------------</a>
+
+<a id="1376" class="Comment">-- Definition 9: Split Enumerability</a>
+<a id="1413" class="Keyword">import</a> <a id="1420" href="Cardinality.Finite.SplitEnumerable.Container.html" class="Module">Cardinality.Finite.SplitEnumerable.Container</a> <a id="1465" class="Keyword">using</a> <a id="1471" class="Symbol">(</a><a id="1472" href="Cardinality.Finite.SplitEnumerable.Container.html#364" class="Function">ℰ!</a><a id="1474" class="Symbol">)</a>
+
+<a id="1477" class="Comment">-- Container based definition is isomophic to inductive</a>
+<a id="1533" class="Keyword">import</a> <a id="1540" href="Cardinality.Finite.SplitEnumerable.Isomorphism.html" class="Module">Cardinality.Finite.SplitEnumerable.Isomorphism</a> <a id="1587" class="Keyword">using</a> <a id="1593" class="Symbol">(</a><a id="1594" href="Cardinality.Finite.SplitEnumerable.Isomorphism.html#806" class="Function">𝕃⇔ℒ⟨ℰ!⟩</a><a id="1601" class="Symbol">)</a>
+
+<a id="1604" class="Comment">-- Definition 10: Container</a>
+<a id="1632" class="Keyword">import</a> <a id="1639" href="Container.html" class="Module">Container</a> <a id="1649" class="Keyword">using</a> <a id="1655" class="Symbol">(</a><a id="1656" href="Container.html#99" class="Record">Container</a><a id="1665" class="Symbol">;</a> <a id="1667" href="Container.html#253" class="Function Operator">⟦_⟧</a><a id="1670" class="Symbol">)</a>
+
+<a id="1673" class="Comment">-- Definition 11: List</a>
+<a id="1696" class="Keyword">import</a> <a id="1703" href="Container.List.html" class="Module">Container.List</a> <a id="1718" class="Keyword">using</a> <a id="1724" class="Symbol">(</a><a id="1725" href="Container.List.html#128" class="Function">List</a><a id="1729" class="Symbol">)</a>
+
+<a id="1732" class="Comment">-- Definition 12: Fin</a>
+<a id="1754" class="Keyword">import</a> <a id="1761" href="Data.Fin.Base.html" class="Module">Data.Fin.Base</a> <a id="1775" class="Keyword">using</a> <a id="1781" class="Symbol">(</a><a id="1782" href="Data.Fin.Base.html#180" class="Function">Fin</a><a id="1785" class="Symbol">)</a>
+
+<a id="1788" class="Comment">-- Definition 13: Surjections</a>
+<a id="1818" class="Keyword">import</a> <a id="1825" href="Function.Surjective.html" class="Module">Function.Surjective</a> <a id="1845" class="Keyword">using</a> <a id="1851" class="Symbol">(</a><a id="1852" href="Function.Surjective.Base.html#358" class="Function Operator">_↠!_</a><a id="1856" class="Symbol">;</a> <a id="1858" href="Function.Surjective.Base.html#433" class="Function Operator">_↠_</a><a id="1861" class="Symbol">)</a>
+
+<a id="1864" class="Comment">-- Lemma 1</a>
+<a id="1875" class="Keyword">import</a> <a id="1882" href="Cardinality.Finite.SplitEnumerable.html" class="Module">Cardinality.Finite.SplitEnumerable</a> <a id="1917" class="Keyword">using</a> <a id="1923" class="Symbol">(</a><a id="1924" href="Cardinality.Finite.SplitEnumerable.html#774" class="Function">ℰ!⇔Fin↠!</a><a id="1932" class="Symbol">)</a>
+
+<a id="1935" class="Comment">-- Lemma 2</a>
+<a id="1946" class="Keyword">import</a> <a id="1953" href="Function.Surjective.Properties.html" class="Module">Function.Surjective.Properties</a> <a id="1984" class="Keyword">using</a> <a id="1990" class="Symbol">(</a><a id="1991" href="Function.Surjective.Properties.html#624" class="Function">Discrete↠!A⇒Discrete⟨A⟩</a><a id="2014" class="Symbol">)</a>
+
+<a id="2017" class="Comment">-- Lemma 3</a>
+<a id="2028" class="Keyword">import</a> <a id="2035" href="Cardinality.Finite.SplitEnumerable.html" class="Module">Cardinality.Finite.SplitEnumerable</a> <a id="2070" class="Keyword">using</a> <a id="2076" class="Symbol">(</a><a id="2077" href="Cardinality.Finite.SplitEnumerable.html#1129" class="Function">ℰ!⇒Discrete</a><a id="2088" class="Symbol">)</a>
+
+<a id="2091" class="Comment">-- Definition 14: Manifest Bishop Finiteness</a>
+<a id="2136" class="Keyword">import</a> <a id="2143" href="Cardinality.Finite.ManifestBishop.Container.html" class="Module">Cardinality.Finite.ManifestBishop.Container</a> <a id="2187" class="Keyword">using</a> <a id="2193" class="Symbol">(</a><a id="2194" href="Cardinality.Finite.ManifestBishop.Container.html#241" class="Function">ℬ</a><a id="2195" class="Symbol">)</a>
+
+<a id="2198" class="Comment">-- Container based definition is isomophic to inductive</a>
+<a id="2254" class="Keyword">import</a> <a id="2261" href="Cardinality.Finite.ManifestBishop.Isomorphism.html" class="Module">Cardinality.Finite.ManifestBishop.Isomorphism</a> <a id="2307" class="Keyword">using</a> <a id="2313" class="Symbol">(</a><a id="2314" href="Cardinality.Finite.ManifestBishop.Isomorphism.html#1142" class="Function">𝕃⇔ℒ⟨ℬ⟩</a><a id="2320" class="Symbol">)</a>
+
+<a id="2323" class="Comment">-- Definition 15: Unique Membership</a>
+<a id="2359" class="Keyword">import</a> <a id="2366" href="Container.Membership.html" class="Module">Container.Membership</a> <a id="2387" class="Keyword">using</a> <a id="2393" class="Symbol">(</a><a id="2394" href="Container.Membership.html#234" class="Function Operator">_∈!_</a><a id="2398" class="Symbol">)</a>
+
+<a id="2401" class="Comment">-- Lemma 4</a>
+<a id="2412" class="Keyword">import</a> <a id="2419" href="Cardinality.Finite.ManifestBishop.html" class="Module">Cardinality.Finite.ManifestBishop</a> <a id="2453" class="Keyword">using</a> <a id="2459" class="Symbol">(</a><a id="2460" href="Cardinality.Finite.ManifestBishop.html#399" class="Function">ℬ⇔Fin≃</a><a id="2466" class="Symbol">)</a>
+
+<a id="2469" class="Comment">-- Definition 16: Cardinal Finiteness</a>
+<a id="2507" class="Keyword">import</a> <a id="2514" href="Cardinality.Finite.Cardinal.html" class="Module">Cardinality.Finite.Cardinal</a> <a id="2542" class="Keyword">using</a> <a id="2548" class="Symbol">(</a><a id="2549" href="Cardinality.Finite.Cardinal.html#547" class="Function">𝒞</a><a id="2550" class="Symbol">;</a> <a id="2552" href="Cardinality.Finite.Cardinal.html#582" class="Function">𝒞≃Fin≃</a><a id="2558" class="Symbol">)</a>
+
+<a id="2561" class="Comment">-- Lemma 5</a>
+<a id="2572" class="Keyword">import</a> <a id="2579" href="Cardinality.Finite.Cardinal.html" class="Module">Cardinality.Finite.Cardinal</a> <a id="2607" class="Keyword">using</a> <a id="2613" class="Symbol">(</a><a id="2614" href="Cardinality.Finite.Cardinal.html#1793" class="Function">cardinality</a><a id="2625" class="Symbol">)</a>
+
+<a id="2628" class="Comment">-- Lemma 6</a>
+<a id="2639" class="Keyword">import</a> <a id="2646" href="Cardinality.Finite.Cardinal.html" class="Module">Cardinality.Finite.Cardinal</a> <a id="2674" class="Keyword">using</a> <a id="2680" class="Symbol">(</a><a id="2681" href="Cardinality.Finite.Cardinal.html#1515" class="Function">𝒞⇒Discrete</a><a id="2691" class="Symbol">)</a>
+
+<a id="2694" class="Comment">-- Definition 17: Manifest Enumerability</a>
+<a id="2735" class="Keyword">import</a> <a id="2742" href="Cardinality.Finite.ManifestEnumerable.Container.html" class="Module">Cardinality.Finite.ManifestEnumerable.Container</a> <a id="2790" class="Keyword">using</a> <a id="2796" class="Symbol">(</a><a id="2797" href="Cardinality.Finite.ManifestEnumerable.Container.html#245" class="Function">ℰ</a><a id="2798" class="Symbol">)</a>
+
+<a id="2801" class="Comment">-- Container based definition is isomorphic to inductive</a>
+<a id="2858" class="Keyword">import</a> <a id="2865" href="Cardinality.Finite.ManifestEnumerable.Isomorphism.html" class="Module">Cardinality.Finite.ManifestEnumerable.Isomorphism</a> <a id="2915" class="Keyword">using</a> <a id="2921" class="Symbol">(</a><a id="2922" href="Cardinality.Finite.ManifestEnumerable.Isomorphism.html#521" class="Function">𝕃⇔ℒ⟨ℰ⟩</a><a id="2928" class="Symbol">)</a>
+
+<a id="2931" class="Comment">-- Lemma 7</a>
+<a id="2942" class="Keyword">import</a> <a id="2949" href="Cardinality.Finite.ManifestEnumerable.html" class="Module">Cardinality.Finite.ManifestEnumerable</a> <a id="2987" class="Keyword">using</a> <a id="2993" class="Symbol">(</a><a id="2994" href="Cardinality.Finite.ManifestEnumerable.html#485" class="Function">ℰ⇔Fin↠</a><a id="3000" class="Symbol">)</a>
+
+<a id="3003" class="Comment">-- Definition 18: S¹</a>
+<a id="3024" class="Keyword">open</a> <a id="3029" class="Keyword">import</a> <a id="3036" href="Cubical.HITs.S1.html" class="Module">Cubical.HITs.S1</a> <a id="3052" class="Keyword">using</a> <a id="3058" class="Symbol">(</a><a id="3059" href="Cubical.HITs.S1.Base.html#485" class="Datatype">S¹</a><a id="3061" class="Symbol">)</a>
+
+<a id="3064" class="Comment">-- Lemma 8</a>
+<a id="3075" class="Keyword">import</a> <a id="3082" href="Cardinality.Finite.ManifestEnumerable.html" class="Module">Cardinality.Finite.ManifestEnumerable</a> <a id="3120" class="Keyword">using</a> <a id="3126" class="Symbol">(</a><a id="3127" href="Cardinality.Finite.ManifestEnumerable.html#614" class="Function">ℰ⟨S¹⟩</a><a id="3132" class="Symbol">)</a>
+
+<a id="3135" class="Comment">-- Definition 19: Kuratowski finite subset</a>
+<a id="3178" class="Keyword">import</a> <a id="3185" href="Algebra.Construct.Free.Semilattice.html" class="Module">Algebra.Construct.Free.Semilattice</a> <a id="3220" class="Keyword">using</a> <a id="3226" class="Symbol">(</a><a id="3227" href="Algebra.Construct.Free.Semilattice.Definition.html#134" class="Datatype">𝒦</a><a id="3228" class="Symbol">)</a>
+
+<a id="3231" class="Comment">-- Definition 20: Membership of 𝒦</a>
+<a id="3265" class="Keyword">import</a> <a id="3272" href="Algebra.Construct.Free.Semilattice.Relation.Unary.html" class="Module">Algebra.Construct.Free.Semilattice.Relation.Unary</a> <a id="3322" class="Keyword">using</a> <a id="3328" class="Symbol">(</a><a id="3329" href="Algebra.Construct.Free.Semilattice.Relation.Unary.Membership.html#640" class="Function Operator">_∈_</a><a id="3332" class="Symbol">)</a>
+
+<a id="3335" class="Comment">-- Definition 21: Kuratowski finiteness</a>
+<a id="3375" class="Keyword">import</a> <a id="3382" href="Cardinality.Finite.Kuratowski.html" class="Module">Cardinality.Finite.Kuratowski</a> <a id="3412" class="Keyword">using</a> <a id="3418" class="Symbol">(</a><a id="3419" href="Cardinality.Finite.Kuratowski.html#475" class="Function">𝒦ᶠ</a><a id="3421" class="Symbol">)</a>
+
+<a id="3424" class="Comment">-- Lemma 9</a>
+<a id="3435" class="Keyword">import</a> <a id="3442" href="Cardinality.Finite.Kuratowski.html" class="Module">Cardinality.Finite.Kuratowski</a> <a id="3472" class="Keyword">using</a> <a id="3478" class="Symbol">(</a><a id="3479" href="Cardinality.Finite.Kuratowski.html#1093" class="Function">isProp𝒦ᶠ</a><a id="3487" class="Symbol">)</a>
+
+<a id="3490" class="Comment">-- Lemma 10</a>
+<a id="3502" class="Keyword">import</a> <a id="3509" href="Cardinality.Finite.Kuratowski.html" class="Module">Cardinality.Finite.Kuratowski</a> <a id="3539" class="Keyword">using</a> <a id="3545" class="Symbol">(</a><a id="3546" href="Cardinality.Finite.Kuratowski.html#1426" class="Function">𝒦ᶠ⟨S¹⟩</a><a id="3552" class="Symbol">)</a>
+
+<a id="3555" class="Comment">--------------------------------------------------------------------------------</a>
+<a id="3636" class="Comment">-- Section 3: Relations Between Each Finiteness Definition</a>
+<a id="3695" class="Comment">--------------------------------------------------------------------------------</a>
+
+<a id="3777" class="Comment">-- Lemma 11</a>
+<a id="3789" class="Keyword">import</a> <a id="3796" href="Cardinality.Finite.ManifestBishop.html" class="Module">Cardinality.Finite.ManifestBishop</a> <a id="3830" class="Keyword">using</a> <a id="3836" class="Symbol">(</a><a id="3837" href="Cardinality.Finite.ManifestBishop.html#1127" class="Function">ℰ!⇒ℬ</a><a id="3841" class="Symbol">)</a>
+
+<a id="3844" class="Comment">-- Lemma 12</a>
+<a id="3856" class="Keyword">import</a> <a id="3863" href="Cardinality.Finite.ManifestBishop.html" class="Module">Cardinality.Finite.ManifestBishop</a> <a id="3897" class="Keyword">using</a> <a id="3903" class="Symbol">(</a><a id="3904" href="Cardinality.Finite.ManifestBishop.html#1047" class="Function">ℬ⇒ℰ!</a><a id="3908" class="Symbol">)</a>
+
+<a id="3911" class="Comment">-- Lemma 13</a>
+<a id="3923" class="Keyword">import</a> <a id="3930" href="Cardinality.Finite.ManifestEnumerable.html" class="Module">Cardinality.Finite.ManifestEnumerable</a> <a id="3968" class="Keyword">using</a> <a id="3974" class="Symbol">(</a><a id="3975" href="Cardinality.Finite.ManifestEnumerable.html#1149" class="Function">ℰ!⇒ℰ</a><a id="3979" class="Symbol">)</a>
+
+<a id="3982" class="Comment">-- Lemma 14</a>
+<a id="3994" class="Keyword">import</a> <a id="4001" href="Cardinality.Finite.ManifestEnumerable.html" class="Module">Cardinality.Finite.ManifestEnumerable</a> <a id="4039" class="Keyword">using</a> <a id="4045" class="Symbol">(</a><a id="4046" href="Cardinality.Finite.ManifestEnumerable.html#1026" class="Function">ℰ⇒ℰ!</a><a id="4050" class="Symbol">)</a>
+
+<a id="4053" class="Comment">-- Lemma 15</a>
+<a id="4065" class="Keyword">import</a> <a id="4072" href="Cardinality.Finite.Cardinal.html" class="Module">Cardinality.Finite.Cardinal</a> <a id="4100" class="Keyword">using</a> <a id="4106" class="Symbol">(</a><a id="4107" href="Cardinality.Finite.Cardinal.html#753" class="Function">ℬ⇒𝒞</a><a id="4110" class="Symbol">)</a>
+
+<a id="4113" class="Comment">-- Theorem 1</a>
+<a id="4126" class="Keyword">import</a> <a id="4133" href="Cardinality.Finite.Cardinal.html" class="Module">Cardinality.Finite.Cardinal</a> <a id="4161" class="Keyword">using</a> <a id="4167" class="Symbol">(</a><a id="4168" href="Cardinality.Finite.Cardinal.html#4418" class="Function">𝒞⇒ℬ</a><a id="4171" class="Symbol">)</a>
+
+<a id="4174" class="Comment">-- Definition 22: List Permutations</a>
+<a id="4210" class="Keyword">import</a> <a id="4217" href="Data.List.Relation.Binary.Permutation.html" class="Module">Data.List.Relation.Binary.Permutation</a> <a id="4255" class="Keyword">using</a> <a id="4261" class="Symbol">(</a><a id="4262" href="Data.List.Relation.Binary.Permutation.html#662" class="Function Operator">_↭_</a><a id="4265" class="Symbol">)</a>
+
+<a id="4268" class="Comment">-- Lemma 16</a>
+<a id="4280" class="Keyword">import</a> <a id="4287" href="Cardinality.Finite.Kuratowski.html" class="Module">Cardinality.Finite.Kuratowski</a> <a id="4317" class="Keyword">using</a> <a id="4323" class="Symbol">(</a><a id="4324" href="Cardinality.Finite.Kuratowski.html#1853" class="Function">𝒞⇔𝒦×Discrete</a><a id="4336" class="Symbol">)</a>
+
+<a id="4339" class="Comment">--------------------------------------------------------------------------------</a>
+<a id="4420" class="Comment">-- Section 4: Relations Between Each Finiteness Definition</a>
+<a id="4479" class="Comment">--------------------------------------------------------------------------------</a>
+
+<a id="4561" class="Comment">-- Lemma 17</a>
+<a id="4573" class="Keyword">import</a> <a id="4580" href="Cardinality.Finite.SplitEnumerable.html" class="Module">Cardinality.Finite.SplitEnumerable</a> <a id="4615" class="Keyword">using</a> <a id="4621" class="Symbol">(</a><a id="4622" href="Cardinality.Finite.SplitEnumerable.html#1569" class="Function">ℰ!⟨⊥⟩</a><a id="4627" class="Symbol">;</a> <a id="4629" href="Cardinality.Finite.SplitEnumerable.html#1508" class="Function">ℰ!⟨⊤⟩</a><a id="4634" class="Symbol">;</a> <a id="4636" href="Cardinality.Finite.SplitEnumerable.html#1397" class="Function">ℰ!⟨2⟩</a><a id="4641" class="Symbol">)</a>
+
+<a id="4644" class="Comment">-- Lemma 18</a>
+<a id="4656" class="Keyword">import</a> <a id="4663" href="Cardinality.Finite.SplitEnumerable.html" class="Module">Cardinality.Finite.SplitEnumerable</a> <a id="4698" class="Keyword">using</a> <a id="4704" class="Symbol">(</a><a id="4705" href="Cardinality.Finite.SplitEnumerable.html#2164" class="Function Operator">_|Σ|_</a><a id="4710" class="Symbol">)</a>
+
+<a id="4713" class="Comment">-- Lemma 19</a>
+<a id="4725" class="Keyword">import</a> <a id="4732" href="Cardinality.Finite.ManifestBishop.html" class="Module">Cardinality.Finite.ManifestBishop</a> <a id="4766" class="Keyword">using</a> <a id="4772" class="Symbol">(</a><a id="4773" href="Cardinality.Finite.ManifestBishop.html#1407" class="Function Operator">_|Π|_</a><a id="4778" class="Symbol">)</a>
+
+<a id="4781" class="Comment">-- Lemma 20</a>
+<a id="4793" class="Keyword">import</a> <a id="4800" href="Cardinality.Finite.Cardinal.html" class="Module">Cardinality.Finite.Cardinal</a> <a id="4828" class="Keyword">using</a> <a id="4834" class="Symbol">(</a><a id="4835" href="Cardinality.Finite.Cardinal.html#833" class="Function">𝒞⇒Choice</a><a id="4843" class="Symbol">)</a>
+
+<a id="4846" class="Comment">-- Resulting closures on 𝒞:</a>
+<a id="4874" class="Keyword">import</a> <a id="4881" href="Cardinality.Finite.Cardinal.html" class="Module">Cardinality.Finite.Cardinal</a> <a id="4909" class="Keyword">using</a>
+  <a id="4917" class="Symbol">(</a><a id="4918" href="Cardinality.Finite.Cardinal.html#1057" class="Function Operator">_∥Σ∥_</a><a id="4923" class="Symbol">;</a> <a id="4925" href="Cardinality.Finite.Cardinal.html#1179" class="Function Operator">_∥⊎∥_</a><a id="4930" class="Symbol">;</a> <a id="4932" href="Cardinality.Finite.Cardinal.html#1274" class="Function Operator">_∥Π∥_</a><a id="4937" class="Symbol">;</a> <a id="4939" href="Cardinality.Finite.Cardinal.html#1396" class="Function Operator">_∥→∥_</a><a id="4944" class="Symbol">;</a> <a id="4946" href="Cardinality.Finite.Cardinal.html#1455" class="Function Operator">_∥×∥_</a><a id="4951" class="Symbol">;</a> <a id="4953" href="Cardinality.Finite.Cardinal.html#2809" class="Function Operator">_∥⇔∥_</a><a id="4958" class="Symbol">;</a> <a id="4960" href="Cardinality.Finite.Cardinal.html#930" class="Function">𝒞⟨⊥⟩</a><a id="4964" class="Symbol">;</a> <a id="4966" href="Cardinality.Finite.Cardinal.html#964" class="Function">𝒞⟨⊤⟩</a><a id="4970" class="Symbol">;</a> <a id="4972" href="Cardinality.Finite.Cardinal.html#998" class="Function">𝒞⟨Bool⟩</a><a id="4979" class="Symbol">)</a>
+
+<a id="4982" class="Comment">-- Theorem 2:</a>
+<a id="4996" class="Keyword">import</a> <a id="5003" href="Cardinality.Finite.Cardinal.Category.html" class="Module">Cardinality.Finite.Cardinal.Category</a> <a id="5040" class="Keyword">using</a> <a id="5046" class="Symbol">(</a><a id="5047" href="Cardinality.Finite.Cardinal.Category.html#1376" class="Function">finSetCategory</a><a id="5061" class="Symbol">)</a>
+
+<a id="5064" class="Comment">-- Quotients are effective</a>
+<a id="5091" class="Keyword">import</a> <a id="5098" href="Cubical.HITs.SetQuotients.Properties.html" class="Module">Cubical.HITs.SetQuotients.Properties</a> <a id="5135" class="Keyword">using</a> <a id="5141" class="Symbol">(</a><a id="5142" href="Cubical.HITs.SetQuotients.Properties.html#3775" class="Function">isEquivRel→isEffective</a><a id="5164" class="Symbol">)</a>
+
+<a id="5167" class="Comment">-- Theorem 3:</a>
+<a id="5181" class="Keyword">import</a> <a id="5188" href="Cardinality.Finite.Cardinal.Category.html" class="Module">Cardinality.Finite.Cardinal.Category</a> <a id="5225" class="Keyword">using</a>
+  <a id="5233" class="Symbol">(</a> <a id="5235" href="Cardinality.Finite.Cardinal.Category.html#1691" class="Function">finSetHasProducts</a>
+  <a id="5255" class="Symbol">;</a> <a id="5257" href="Cardinality.Finite.Cardinal.Category.html#2314" class="Function">finSetHasExp</a>
+  <a id="5272" class="Symbol">;</a> <a id="5274" href="Cardinality.Finite.Cardinal.Category.html#2801" class="Function">finSetHasPullbacks</a>
+  <a id="5295" class="Symbol">;</a> <a id="5297" href="Cardinality.Finite.Cardinal.Category.html#3573" class="Function">finSetTerminal</a>
+  <a id="5314" class="Symbol">;</a> <a id="5316" href="Cardinality.Finite.Cardinal.Category.html#3745" class="Function">finSetInitial</a>
+  <a id="5332" class="Symbol">;</a> <a id="5334" href="Cardinality.Finite.Cardinal.Category.html#6115" class="Function">finSetCoeq</a>
+  <a id="5347" class="Symbol">;</a> <a id="5349" class="Keyword">module</a> <a id="5356" href="Cardinality.Finite.Cardinal.Category.html#6686" class="Module">PullbackSurjProofs</a>
+  <a id="5377" class="Symbol">)</a>
+
+<a id="5380" class="Comment">-- Same for hSets</a>
+<a id="5398" class="Keyword">import</a> <a id="5405" href="Categories.HSets.html" class="Module">Categories.HSets</a> <a id="5422" class="Keyword">using</a>
+  <a id="5430" class="Symbol">(</a> <a id="5432" href="Categories.HSets.html#1579" class="Function">hSetProd</a>
+  <a id="5443" class="Symbol">;</a> <a id="5445" href="Categories.HSets.html#2138" class="Function">hSetExp</a>
+  <a id="5455" class="Symbol">;</a> <a id="5457" href="Categories.HSets.html#2518" class="Function">hSetHasPullbacks</a>
+  <a id="5476" class="Symbol">;</a> <a id="5478" href="Categories.HSets.html#3300" class="Function">hSetTerminal</a>
+  <a id="5493" class="Symbol">;</a> <a id="5495" href="Categories.HSets.html#3464" class="Function">hSetInitial</a>
+  <a id="5509" class="Symbol">;</a> <a id="5511" href="Categories.HSets.html#5619" class="Function">hSetCoeq</a>
+  <a id="5522" class="Symbol">;</a> <a id="5524" class="Keyword">module</a> <a id="5531" href="Categories.HSets.html#6172" class="Module">PullbackSurjProofs</a>
+  <a id="5552" class="Symbol">)</a>
+
+<a id="5555" class="Comment">--------------------------------------------------------------------------------</a>
+<a id="5636" class="Comment">-- Section 5: Countably Infinite Types</a>
+<a id="5675" class="Comment">--------------------------------------------------------------------------------</a>
+
+<a id="5757" class="Comment">-- Definition 23: Streams</a>
+<a id="5783" class="Keyword">import</a> <a id="5790" href="Codata.Stream.html" class="Module">Codata.Stream</a> <a id="5804" class="Keyword">using</a> <a id="5810" class="Symbol">(</a><a id="5811" href="Codata.Stream.html#223" class="Function">Stream</a><a id="5817" class="Symbol">)</a>
+
+<a id="5820" class="Comment">-- Definition 24: Split Countability</a>
+<a id="5857" class="Keyword">import</a> <a id="5864" href="Cardinality.Infinite.Split.html" class="Module">Cardinality.Infinite.Split</a> <a id="5891" class="Keyword">using</a> <a id="5897" class="Symbol">(</a><a id="5898" href="Cardinality.Infinite.Split.html#484" class="Function">ℰ!</a><a id="5900" class="Symbol">)</a>
+
+<a id="5903" class="Comment">-- Definition 25: Countability</a>
+<a id="5934" class="Keyword">import</a> <a id="5941" href="Cardinality.Infinite.Split.html" class="Module">Cardinality.Infinite.Split</a> <a id="5968" class="Keyword">using</a> <a id="5974" class="Symbol">(</a><a id="5975" href="Cardinality.Infinite.Split.html#4831" class="Function">ℰ</a><a id="5976" class="Symbol">)</a>
+
+<a id="5979" class="Comment">-- Lemma 21</a>
+<a id="5991" class="Keyword">import</a> <a id="5998" href="Cardinality.Infinite.Split.html" class="Module">Cardinality.Infinite.Split</a> <a id="6025" class="Keyword">using</a> <a id="6031" class="Symbol">(</a><a id="6032" href="Cardinality.Infinite.Split.html#5138" class="Function">ℰ⇒Discrete</a><a id="6042" class="Symbol">)</a>
+
+<a id="6045" class="Comment">-- Theorem 4</a>
+<a id="6058" class="Keyword">import</a> <a id="6065" href="Cardinality.Infinite.Split.html" class="Module">Cardinality.Infinite.Split</a> <a id="6092" class="Keyword">using</a> <a id="6098" class="Symbol">(</a><a id="6099" href="Cardinality.Infinite.Split.html#1485" class="Function Operator">_|Σ|_</a><a id="6104" class="Symbol">)</a>
+
+<a id="6107" class="Comment">-- Theorem 5</a>
+<a id="6120" class="Keyword">import</a> <a id="6127" href="Cardinality.Infinite.Split.html" class="Module">Cardinality.Infinite.Split</a> <a id="6154" class="Keyword">using</a> <a id="6160" class="Symbol">(</a><a id="6161" href="Cardinality.Infinite.Split.html#4354" class="Function">|star|</a><a id="6167" class="Symbol">)</a>
+
+<a id="6170" class="Comment">--------------------------------------------------------------------------------</a>
+<a id="6251" class="Comment">-- Section 6: Search</a>
+<a id="6272" class="Comment">--------------------------------------------------------------------------------</a>
+
+<a id="6354" class="Comment">-- Definition 26: Omniscience</a>
+<a id="6384" class="Keyword">import</a> <a id="6391" href="Relation.Nullary.Omniscience.html" class="Module">Relation.Nullary.Omniscience</a> <a id="6420" class="Keyword">using</a> <a id="6426" class="Symbol">(</a><a id="6427" href="Relation.Nullary.Omniscience.html#372" class="Function">Omniscient</a><a id="6437" class="Symbol">)</a>
+
+<a id="6440" class="Comment">-- Definition 27: Exhaustibility</a>
+<a id="6473" class="Keyword">import</a> <a id="6480" href="Relation.Nullary.Omniscience.html" class="Module">Relation.Nullary.Omniscience</a> <a id="6509" class="Keyword">using</a> <a id="6515" class="Symbol">(</a><a id="6516" href="Relation.Nullary.Omniscience.html#383" class="Function">Exhaustible</a><a id="6527" class="Symbol">)</a>
+
+<a id="6530" class="Keyword">import</a> <a id="6537" href="Cardinality.Finite.Kuratowski.html" class="Module">Cardinality.Finite.Kuratowski</a> <a id="6567" class="Keyword">using</a> <a id="6573" class="Symbol">(</a><a id="6574" href="Cardinality.Finite.Kuratowski.html#2315" class="Function">𝒦ᶠ⇒Exhaustible</a><a id="6588" class="Symbol">)</a>
+<a id="6590" class="Keyword">import</a> <a id="6597" href="Relation.Nullary.Omniscience.html" class="Module">Relation.Nullary.Omniscience</a> <a id="6626" class="Keyword">using</a> <a id="6632" class="Symbol">(</a><a id="6633" href="Relation.Nullary.Omniscience.html#554" class="Function">Omniscient→Exhaustible</a><a id="6655" class="Symbol">)</a>
+<a id="6657" class="Keyword">import</a> <a id="6664" href="Cardinality.Finite.ManifestEnumerable.html" class="Module">Cardinality.Finite.ManifestEnumerable</a> <a id="6702" class="Keyword">using</a> <a id="6708" class="Symbol">(</a><a id="6709" href="Cardinality.Finite.ManifestEnumerable.html#1841" class="Function">ℰ⇒Omniscient</a><a id="6721" class="Symbol">)</a>
+<a id="6723" class="Keyword">import</a> <a id="6730" href="Cardinality.Finite.Kuratowski.html" class="Module">Cardinality.Finite.Kuratowski</a> <a id="6760" class="Keyword">using</a> <a id="6766" class="Symbol">(</a><a id="6767" href="Cardinality.Finite.Kuratowski.html#2554" class="Function">𝒦ᶠ⇒∣Omniscient∣</a><a id="6782" class="Symbol">)</a>
+
+<a id="6785" class="Keyword">import</a> <a id="6792" href="Data.Pauli.html" class="Module">Data.Pauli</a> <a id="6803" class="Keyword">using</a> <a id="6809" class="Symbol">(</a><a id="6810" href="Data.Pauli.html#879" class="Datatype">Pauli</a><a id="6815" class="Symbol">)</a>
+<a id="6817" class="Keyword">import</a> <a id="6824" href="Data.Pauli.html" class="Module">Data.Pauli</a> <a id="6835" class="Keyword">using</a> <a id="6841" class="Symbol">(</a><a id="6842" href="Data.Pauli.html#1626" class="Function">assoc-·</a><a id="6849" class="Symbol">)</a>
+<a id="6851" class="Keyword">import</a> <a id="6858" href="Data.Pauli.html" class="Module">Data.Pauli</a> <a id="6869" class="Keyword">using</a> <a id="6875" class="Symbol">(</a><a id="6876" href="Data.Pauli.html#661" class="Function">not-spec</a><a id="6884" class="Symbol">)</a>
+</pre></body></html>
